@@ -910,8 +910,11 @@ func (bc *BlockChain) insertChain(chain types.Blocks) (int, []interface{}, []*ty
 		if err == nil {
 			err = bc.Validator().ValidateBody(block)
 		}
-		if err != nil {
-			if err == ErrKnownBlock {
+		switch {
+		case err == ErrKnownBlock:
+			// Block and state both already known. However if the current block is below
+			// this number we did a rollback and we should reimport it nonetheless.
+			if bc.CurrentBlock().NumberU64() >= block.NumberU64() {
 				stats.ignored++
 				continue
 			}
