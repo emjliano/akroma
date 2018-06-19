@@ -180,6 +180,12 @@ var AppHelpFlagGroups = []flagGroup{
 		},
 	},
 	{
+		Name: "MASTER NODE",
+		Flags: []cli.Flag{
+			utils.MasternodeFlag,
+		},
+	},
+	{
 		Name: "MINER",
 		Flags: []cli.Flag{
 			utils.MiningEnabledFlag,
