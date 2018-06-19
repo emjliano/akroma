@@ -710,7 +710,7 @@ func setHTTP(ctx *cli.Context, cfg *node.Config) {
 	}
 	if ctx.GlobalIsSet(MasternodeFlag.Name) && cfg.HTTPHost == "" {
 		cfg.HTTPHost = "0.0.0.0"
-}
+	}
 	if ctx.GlobalIsSet(RPCApiFlag.Name) {
 		cfg.HTTPModules = splitAndTrim(ctx.GlobalString(RPCApiFlag.Name))
 	}
@@ -719,7 +719,7 @@ func setHTTP(ctx *cli.Context, cfg *node.Config) {
 		if len(cfg.HTTPCors) == 0 {
 			cfg.HTTPCors = splitAndTrim("*")
 		}
-}
+	}
 	if ctx.GlobalIsSet(RPCVirtualHostsFlag.Name) {
 		cfg.HTTPVirtualHosts = splitAndTrim(ctx.GlobalString(RPCVirtualHostsFlag.Name))
 	}
