@@ -374,7 +374,7 @@ type Rules struct {
 	IsConstantinople                          bool
 	IsAkroma                                  bool
 	IsBaneslayer                              bool
-	IsCopperLeaf							  bool
+	IsCopperLeaf                              bool
 }
 
 // Rules ensures c's ChainID is not nil.
