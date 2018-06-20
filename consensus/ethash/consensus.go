@@ -540,18 +540,18 @@ func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 	if config.IsByzantium(header.Number) {
 		blockReward = ByzantiumBlockReward
 	}
-	masternodeBlockReward := big.NewInt(2e+18) //2.00
+	masternodeBlockReward := big.NewInt(2e+18)  //2.00
 	developmentBlockReward := big.NewInt(1e+18) //1.00
 	if config.IsAkroma(header.Number) {
 		blockReward = AkromaBlockReward //7.00
 	}
 	if config.IsBaneslayer(header.Number) {
-		blockReward = big.NewInt(600e+16) // 6.00
+		blockReward = big.NewInt(600e+16)           // 6.00
 		masternodeBlockReward = big.NewInt(225e+16) //2.25
 		developmentBlockReward = big.NewInt(75e+16) //0.75
 	}
 	if config.IsCopperLeaf(header.Number) {
-		blockReward = big.NewInt(550e+16) //5.50
+		blockReward = big.NewInt(550e+16)           //5.50
 		masternodeBlockReward = big.NewInt(250e+16) //2.50
 		developmentBlockReward = big.NewInt(65e+16) //0.65
 	}
