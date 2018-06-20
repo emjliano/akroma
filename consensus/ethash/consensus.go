@@ -540,12 +540,12 @@ func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 	if config.IsByzantium(header.Number) {
 		blockReward = ByzantiumBlockReward
 	}
-	masternodeBlockReward  := big.NewInt(2e+18)
+	masternodeBlockReward := big.NewInt(2e+18)
 	developmentBlockReward := big.NewInt(1e+18)
 	if config.IsAkroma(header.Number) {
 		blockReward = AkromaBlockReward
 	}
-	if config.IsBaneslayer(header.Number){
+	if config.IsBaneslayer(header.Number) {
 		blockReward = new(big.Int).Mul(big.NewInt(6), big.NewInt(1e+18))
 		masternodeBlockReward = new(big.Int).Mul(big.NewInt(225), big.NewInt(1e+16))
 		developmentBlockReward = new(big.Int).Mul(big.NewInt(75), big.NewInt(1e+16))
