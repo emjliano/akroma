@@ -43,6 +43,8 @@ var (
 	developmentBlockReward *big.Int = big.NewInt(1e+18) // Block reward in wei for current and future development
 	maxUncles                       = 2                 // Maximum number of uncles allowed in a single block
 	allowedFutureBlockTime          = 15 * time.Second  // Max time from current time allowed for blocks, before they're considered future blocks
+	DevelopmentFundAddress          = common.HexToAddress("0x0d20f8b8bef42d768555cf9c1fa7401d930b3484")
+	MasternodeFundAddress           = common.HexToAddress("0x4b0b5aBfB408eC93a40369FB1Ed29e29D5504a43")
 )
 
 // Various error messages to mark blocks invalid. These should be private to
@@ -558,9 +560,9 @@ func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 	}
 	state.AddBalance(header.Coinbase, reward)
 	// Akroma Foundation address
-	state.AddBalance(common.HexToAddress("0x0d20f8b8bef42d768555cf9c1fa7401d930b3484"), developmentBlockReward)
+	state.AddBalance(DevelopmentFundAddress, developmentBlockReward)
 	// Masternode Fund address
 	if config.IsAkroma(header.Number) {
-		state.AddBalance(common.HexToAddress("0x4b0b5aBfB408eC93a40369FB1Ed29e29D5504a43"), masternodeBlockReward)
+		state.AddBalance(MasternodeFundAddress, masternodeBlockReward)
 	}
 }
